@@ -4,20 +4,20 @@ import os
 import sqlite3
 from PIL import Image
 
-#training hình ảnh nhận diện với Thư viện nhận diện khuôn mặt
+# Doi chieu hình ảnh nhận diện với Thư viện nhận diện khuôn mặt
 
-    #Khuôn mặt ở đâu trên cam
+#Khuôn mặt ở đâu trên cam
 face_cascade = cv2.CascadeClassifier('C:\opencv\sources\data\haarcascades\haarcascade_frontalface_default.xml')
-    #Khuôn mặt đấy là ai
+#Khuôn mặt đấy là ai
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
 #Đối chiếu xem khuôn mặt nhận diện trên camera có trong tập dữ liệu đã được học hay không và nếu có thì là ai
-recognizer.read(r"C:\Users\ADMIN\Desktop\Pythontime\Project 1 Opencv_FaceRecog\recognizer\trainingData.yml")
+recognizer.read(r"E:\Tot-Nghiep\Project 1 Opencv_FaceRecog\recognizer\trainingData.yml")
 
 #Lấy thông tin bằng id từ database sqlite3
 def getProfile(id):
 
-    conn = sqlite3.connect(r"C:\Users\ADMIN\Desktop\Pythontime\Project 1 Opencv_FaceRecog\dataFace.db")
+    conn = sqlite3.connect(r"E:\Tot-Nghiep\Project 1 Opencv_FaceRecog\dataFace.db")
     query = "SELECT * FROM People WHERE ID=" +str(id)
     cursor = conn.execute(query)
 
@@ -57,11 +57,11 @@ while(True):
                 cv2.putText(frame,"" +str(profile[1]), (x+10, y+h +30), fontface, 1, (0,255,0), 2)
 
         else: 
-            cv2.putText(frame,"Unknown", (x+10, y+h +30),fontface, 1, (0,0,255), 2)
+            cv2.putText(frame,"Unknow", (x+10, y+h +30),fontface, 1, (0,0,255), 2)
     cv2.imshow('image',frame)
 
     #Sẽ không bị tắt liền khi mở lên, và chỉ bị ngắt khi dừng chương trình ở python hoặc nhấn "q"
-    #Will not turn off immediately Unless you stop python or press "q"
+    #Will not turn off immediately unless you stop python or press "q"
     if(cv2.waitKey(1) == ord('q')):
         break; 
 

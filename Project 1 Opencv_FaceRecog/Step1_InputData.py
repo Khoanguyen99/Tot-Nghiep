@@ -1,4 +1,3 @@
-
 from cv2 import cv2
 import numpy as np 
 import sqlite3
@@ -7,7 +6,7 @@ import os
 # Insert or update Id, name
 def insertOrUpdate(id, name):
 
-    conn = sqlite3.connect(r"C:\Users\ADMIN\Desktop\Pythontime\Project 1 Opencv_FaceRecog\dataFace.db")
+    conn = sqlite3.connect(r"E:\Tot-Nghiep\Project 1 Opencv_FaceRecog\dataFace.db")
 
     query = "SELECT * FROM people WHERE ID="+ str(id)
     cursor = conn.execute(query) 
@@ -20,13 +19,14 @@ def insertOrUpdate(id, name):
     if(isRecordExist == 0):
         query = "INSERT INTO people(ID, Name) VALUES(" +str(id)+ ",'"+ str(name) +"')"
     else :
-            query = "UPDATE people SET Name='"+str(name)+"' WHERE ID=" +str(id)
+        query = "UPDATE people SET Name='"+str(name)+"' WHERE ID=" +str(id)
 
     conn.execute(query)
     conn.commit()
     conn.close()
 
 #Load thư viện opencv/ Load opencv
+
 
 face_cascade = cv2.CascadeClassifier("C:\opencv\sources\data\haarcascades\haarcascade_frontalface_default.xml")
 
@@ -61,7 +61,7 @@ while(True):
     cv2.imshow('frame', frame) #show ảnh lên / Show picture
     cv2.waitKey(1) #Bật lên không bị tắt luôn / Open the window and it will not turn off immediately
 
-    if sampleNum > 100 :
+    if sampleNum > 200 :
         break
 
 #Chụp ảnh xong tự đóng cửa sổ / Finish and turn off window

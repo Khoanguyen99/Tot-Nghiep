@@ -9,12 +9,17 @@ Make sure you already install, my device is using tools with the following verso
 	Pillow                  8.1.2
 After install all, Go to cmd and try "pip list" to watch all your tools which is already installed
 
+
+
+
+** This guide is for someone don't know anything, just started learn python and face recognition like me :(
 First, Create a folder to save all your data, move all 3 .py file to your folder
 Create an SQLite3 database 
 	Database name: "dataFace.db" 
 	Table name: "people"
 	Add fields: "ID", Type: "INTERGER", "NOT NULL" + "PRIMARY KEY"
 	Add fields: "Name", Type: "Text", "NOT NULL"
+
 On Step1:
 	Line 10: Make sure you change source to "dataFace.db" in your directory, if this not working put "r" before your source, For example
 		conn = sqlite3.connect(r"C:\Users\ADMIN\Desktop\Python time\Face Recognizer\dataFace.db")
@@ -36,6 +41,7 @@ Basically, it will show your detail below your face with Green Rectangle, If not
 Overall project evaluation: 
 	Maybe the FaceDetect on this project is not good at all- it doesn't have high precision, sometime detect some strangle object,
 	Face Recognize is not working good too, same with FaceDetect.
+
 
 
 This project is my first project to start learning about python and Face Recognition.

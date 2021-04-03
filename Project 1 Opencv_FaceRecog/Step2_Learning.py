@@ -30,7 +30,7 @@ def getImagewithID(path):
 
         faces.append(faceNp)
         IDs.append(Id)
-
+    
         cv2.imshow('training', faceNp)
         cv2.waitKey(10)
         
